@@ -1,0 +1,23 @@
+{
+  "name": "ai-repo-evaluator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/parser": "^7.25.6",
+    "acorn": "^8.12.1",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "simple-git": "^3.26.0"
+  }
+}
