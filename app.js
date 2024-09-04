@@ -4,9 +4,11 @@ const fs = require("fs");
 const simpleGit = require("simple-git");
 const axios = require("axios");
 require("dotenv").config();
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Helper function to read file content
 const readFile = (filePath) => {
