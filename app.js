@@ -102,7 +102,7 @@ const cleanupRepository = (repoPath) => {
 
 // Endpoint to evaluate the repository
 app.post("/evaluate", async (req, res) => {
-  const { repoUrl } = req.body;
+  const { repoUrl, cases } = req.body;
   const repoPath = path.join(process.cwd(), "cloned-repo");
 
   try {
@@ -143,11 +143,11 @@ app.post("/evaluate", async (req, res) => {
               role: "user",
               content: `
                     Evaluate the following React code and provide scores out of 10. Break down the score as follows:
-                    1. Displays a list of products with their name and description: 2 marks
-                    2. Allows adding items to the cart and updating the cart quantity: 2 marks
-                    3. Changes the "Add to Cart" button to "Remove from Cart" once an item is added: 2 marks
-                    4. Allows removing items from the cart and updates the cart quantity accordingly: 2 marks
-                    5. The code follows best practices and is clean and maintainable: 2 marks
+                    1. ${cases[0]}: 2 marks
+                    2. ${cases[1]}: 2 marks
+                    3. ${cases[2]}: 2 marks
+                    4. ${cases[3]}: 2 marks
+                    5. ${cases[4]}: 2 marks
   
                     Code: 
                     ${combinedCodeContent}
@@ -157,11 +157,11 @@ app.post("/evaluate", async (req, res) => {
                     {
                       "analysis": "Overall analysis of the code.",
                       "scores": {
-                        "Displays products": 2,
-                        "Adds items to cart": 2,
-                        "Changes button state": 2,
-                        "Removes items from cart": 2,
-                        "Best practices": 2
+                        ${cases[0]}: 2,
+                        ${cases[1]}: 2,
+                        ${cases[2]}: 2,
+                        ${cases[3]}: 2,
+                        ${cases[4]}: 2
                       },
                       "totalScore": 10
                     }`,
