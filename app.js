@@ -6,6 +6,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 require("dotenv").config();
 const cors = require("cors");
+const { log } = require("console");
 
 const app = express();
 app.use(express.json());
@@ -149,7 +150,6 @@ app.post("/evaluate", async (req, res) => {
   const { repoUrl, title } = req.body;
   let cases = [];
 
-  // Set evaluation cases based on the title
   if (title.toLowerCase() === "memory game") {
     cases = [
       "Create a basic HTML layout with a container for the game board.",
@@ -163,6 +163,23 @@ app.post("/evaluate", async (req, res) => {
       "A responsive design for desktop and mobile.",
       "A README file explaining the project setup and play instructions.",
     ];
+  }
+
+  if (title.toLowerCase() === "shopping cart") {
+    cases = [
+      "Display a list of available products with their name and description.",
+      "Users can add items to the cart by clicking the 'Add to Cart' button.",
+      "When an item is added, the cart quantity number should increase.",
+      "Change 'Add to Cart' button to 'Remove from Cart' once the item is added.",
+      "Users can remove items from the cart by clicking the 'Remove from Cart' button.",
+      "When an item is removed, the cart quantity number should decrease.",
+      "Change 'Remove from Cart' button back to 'Add to Cart' once the item is removed.",
+    ];
+  }
+
+  if (title.toLowerCase() === "custom test cases") {
+    cases = req.body.customTestCases;
+    console.log(cases);
   }
 
   const totalMarks = 10;
